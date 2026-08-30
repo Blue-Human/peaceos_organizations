@@ -1,0 +1,22 @@
+# CODEOWNERS — PeaceOS Transparency Registry
+#
+# TODO (maintainers): replace the placeholders below with the real GitHub
+# handles / team of the people who custody this registry, then enable
+# "Require review from Code Owners" in branch protection for `main`.
+#
+# This registry is the ROOT OF TRUST for organizational identity in PeaceOS
+# Verify. The owners listed here decide which organizations — and which keys —
+# are trusted. GOVERNANCE.md requires a minimum of two maintainers and, for a
+# first-time organization, two approvals. Keep this file in sync with the
+# "Roles" section of GOVERNANCE.md.
+#
+# Until this is filled in, branch protection ("require a pull request with at
+# least one approval", "no force-push", "linear history") is what guards `main`.
+
+# Everything, especially the trust-bearing paths:
+# *                       @Blue-Human/transparency-maintainers
+# /keys/                   @Blue-Human/transparency-maintainers
+# /revocations/            @Blue-Human/transparency-maintainers
+# /GOVERNANCE.md           @Blue-Human/transparency-maintainers
+# /.github/                @Blue-Human/transparency-maintainers
+# /scripts/                @Blue-Human/transparency-maintainers

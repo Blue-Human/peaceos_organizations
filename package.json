@@ -1,0 +1,19 @@
+{
+  "name": "peaceos-transparency",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Append-only public registry of PeaceOS organizational Ed25519 public keys — the root of trust for Verify's org_identity check.",
+  "license": "CC0-1.0 AND Apache-2.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "validate:strict": "node scripts/validate.mjs --strict",
+    "build-manifest": "node scripts/build-manifest.mjs",
+    "anchor": "sh scripts/anchor.sh"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

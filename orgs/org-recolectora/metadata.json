@@ -1,0 +1,18 @@
+{
+  "org_id": "org-recolectora",
+  "display_name": "EXAMPLE FIXTURE — not a real organization",
+  "status": "example",
+  "trust": "example-fixture",
+  "not_a_real_organization": true,
+  "warning": "TEST FIXTURE — DO NOT TRUST. The PRIVATE key matching this entry is publicly known: it ships in examples/ of the Blue-Human/peaceosv3 code repository, visible to everyone. This entry exists only so the registry is non-empty and so end-to-end verification of the example packages (examples/packages/*.vep in the code repo) can be exercised. It is NOT a real trust anchor and must never be treated as one. A real organization is added via the process in CONTRIBUTING.md, with out-of-band ownership verification.",
+  "homepage": null,
+  "contact": null,
+  "keys": [
+    {
+      "key_id": "org-2026",
+      "state": "active",
+      "added": "2026-08-30",
+      "note": "Copied verbatim from Blue-Human/peaceosv3 examples/transparency/keys/org-recolectora/org-2026.pub (git blob 1276fe402c3ddaa45e8c9f6d94444f264adc9fbf). Public key only; the corresponding private key is public — fixture use only."
+    }
+  ]
+}
