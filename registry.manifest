@@ -1,0 +1,6 @@
+# PeaceOS Transparency Registry — key manifest
+# format: 1
+# fields: <org_id>/<key_id> <sha256-of-raw-32-byte-.pub> [example]
+# Sorted by "<org_id>/<key_id>". Regenerate with: npm run build-manifest
+# This file is anchored by timestamps/registry.ots (npm run anchor).
+org-recolectora/org-2026 e3a835b50910454e9c2efe80d7e0bf47a99efa547bf331f68e170085e6ae3cde example

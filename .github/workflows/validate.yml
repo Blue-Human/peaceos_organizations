@@ -1,0 +1,57 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# No secrets, no write permissions — this workflow only reads the tree.
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # The registry has zero code dependencies; there is nothing to install.
+      # If a lockfile or node_modules/ ever appears, fail loudly.
+      - name: Refuse code dependencies
+        run: |
+          if [ -e package-lock.json ] || [ -e pnpm-lock.yaml ] || [ -e yarn.lock ] || [ -d node_modules ]; then
+            echo "::error::This repo must stay dependency-free. Remove the lockfile / node_modules."
+            exit 1
+          fi
+
+      # Structure + no private-key material + manifest not internally broken.
+      # Branch protection should require this job to pass before merge.
+      - name: validate
+        run: node scripts/validate.mjs
+
+      # Second, independent pass with different code, so a bug in validate.mjs
+      # alone cannot let key material through. Covers the two highest-value
+      # checks; validate.mjs above covers the rest (64-byte blobs, seed phrases).
+      - name: Belt-and-braces secret scan
+        run: |
+          set -eu
+          fail=0
+
+          echo "Checking filenames..."
+          if git ls-files | grep -nEi '\.(key|pem|p12|pfx|priv|sk|seed|mnemonic)$|(^|/)(id_ed25519|id_rsa|id_ecdsa|id_dsa)$'; then
+            echo "::error::the file(s) above are named like private-key material"
+            fail=1
+          fi
+
+          echo "Checking for PEM private-key banners..."
+          if git grep -nE -- '-{5}BEGIN [A-Z0-9 ]*PRIVATE KEY-{5}'; then
+            echo "::error::the file(s) above contain a PEM PRIVATE KEY banner"
+            fail=1
+          fi
+
+          [ "$fail" = "0" ] && echo "secret scan: clean"
+          exit "$fail"

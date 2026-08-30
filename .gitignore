@@ -1,0 +1,24 @@
+# This repo has ZERO code dependencies — there should never be a node_modules.
+node_modules/
+
+# OS / editor noise
+.DS_Store
+*.swp
+
+# Never commit private-key material. These patterns are a backstop; scripts/validate.mjs
+# is the enforced check. If you have a *.key / *.pem / seed file in this tree, you have
+# made a mistake — delete it and rotate the key.
+*.key
+*.pem
+*.p12
+*.pfx
+*.priv
+*.sk
+*.seed
+*.mnemonic
+id_ed25519
+id_rsa
+id_ecdsa
+
+# OpenTimestamps leaves this next to the target before we move it into timestamps/
+/registry.manifest.ots
